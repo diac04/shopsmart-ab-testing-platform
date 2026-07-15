@@ -6,8 +6,9 @@ assumptions to see projected revenue impact and ROI per experiment.
 """
 
 import streamlit as st
+import pandas as pd
+from dashboard_data import EXPERIMENT_SUMMARY, COMBINED_IMPACT
 import plotly.graph_objects as go
-from dashboard_data import EXPERIMENT_SUMMARY
 
 
 def show():
