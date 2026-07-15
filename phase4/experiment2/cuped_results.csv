@@ -1,0 +1,16 @@
+metric,value
+Raw variance — control,276332.4
+Raw variance — treatment,326962.83
+CUPED variance — control,81576.83
+CUPED variance — treatment,88895.31
+Variance reduction (%),71.74
+Phase 1 n per group,566.0
+CUPED-equivalent n per group,160.0
+Users saved per group,406.0
+Theta,8.896956
+Pooled correlation rho,0.8473
+Raw mean diff (Rs.),56.35
+CUPED mean diff (Rs.),18.9
+CUPED bootstrap CI lo,8.92
+CUPED bootstrap CI hi,28.91
+CUPED bootstrap p-value,0.0

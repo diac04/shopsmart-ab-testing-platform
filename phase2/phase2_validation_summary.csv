@@ -1,0 +1,22 @@
+Experiment,Check,Status,Gate,Detail
+Exp1: Checkout,1. SRM (Gate),❌ FAIL,🔒 GATE,"chi2=447.13, p=0.000000 < 0.01. T/C ratio=1.0833. SRM DETECTED."
+Exp1: Checkout,2. A/A Equivalence,✅ PASS,,"Pre-exp diff=-0.0014, perm p=0.5120. Groups are equivalent pre-experiment."
+Exp1: Checkout,3. Duplicates,❌ FAIL,,1 duplicate rows. 0 cross-group.
+Exp1: Checkout,4. Leakage,✅ PASS,,No users appear in both groups.
+Exp1: Checkout,5. Bot Detection,⚠️  WARN,,34836 suspected bots (12.466%). Review before analysis.
+Exp1: Checkout,6. Novelty Effect,⚠️  WARN,,"Early lift=-3.08%, Late lift=-1.33%, Ratio=2.312 > 1.15. Novelty effect detected."
+Exp1: Checkout,7. Time Anomalies,⚠️  WARN,,Unusual night traffic: 12.47%
+Exp2: Recs,1. SRM (Gate),✅ PASS,🔒 GATE,"chi2=0.00, p=1.000000 >= 0.01. T/C ratio=1.0000. No SRM."
+Exp2: Recs,2. A/A Equivalence,⚠️  WARN,,"Pre-exp diff=4.5122, perm p=0.0000. Groups may differ pre-experiment."
+Exp2: Recs,3. Duplicates,✅ PASS,,No duplicate user_ids found.
+Exp2: Recs,4. Leakage,✅ PASS,,No users appear in both groups.
+Exp2: Recs,5. Bot Detection,⚠️  WARN,,655 suspected bots (2.893%). Review before analysis.
+Exp2: Recs,6. Novelty Effect,⚠️  WARN,,"Early lift=+16.28%, Late lift=+10.08%, Ratio=1.615 > 1.15. Novelty effect detected."
+Exp2: Recs,7. Time Anomalies,✅ PASS,,No date/time anomalies detected.
+Exp3: Banner,1. SRM (Gate),✅ PASS,🔒 GATE,"chi2=0.00, p=1.000000 >= 0.01. T/C ratio=1.0000. No SRM."
+Exp3: Banner,2. A/A Equivalence,⚠️  WARN,,"Pre-exp diff=0.0102, perm p=0.0020. Groups may differ pre-experiment."
+Exp3: Banner,3. Duplicates,✅ PASS,,No duplicate user_ids found.
+Exp3: Banner,4. Leakage,✅ PASS,,No users appear in both groups.
+Exp3: Banner,5. Bot Detection,⚠️  WARN,,5894 suspected bots (2.984%). Review before analysis.
+Exp3: Banner,6. Novelty Effect,✅ PASS,,"Early lift=+18.94%, Late lift=+20.89%, Ratio=0.907. No novelty concern."
+Exp3: Banner,7. Time Anomalies,✅ PASS,,No date/time anomalies detected.

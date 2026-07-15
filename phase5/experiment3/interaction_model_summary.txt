@@ -1,0 +1,24 @@
+                           Logit Regression Results                           
+==============================================================================
+Dep. Variable:                clicked   No. Observations:               197544
+Model:                          Logit   Df Residuals:                   197540
+Method:                           MLE   Df Model:                            3
+Date:                Sat, 11 Jul 2026   Pseudo R-squ.:                0.003041
+Time:                        03:20:22   Log-Likelihood:                -30956.
+converged:                       True   LL-Null:                       -31050.
+Covariance Type:            nonrobust   LLR p-value:                 1.072e-40
+==================================================================================
+                     coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------
+const             -3.5364      0.032   -109.462      0.000      -3.600      -3.473
+treatment_flag     0.1419      0.044      3.200      0.001       0.055       0.229
+mobile_flag        0.2482      0.039      6.420      0.000       0.172       0.324
+treat_x_mobile     0.0707      0.053      1.340      0.180      -0.033       0.174
+==================================================================================
+
+INTERPRETATIONS:
+  - BASELINE (desktop, control): odds of clicking = 0.0291 (p=0.0000). This is the reference cell.
+  - TREATMENT effect on DESKTOP: the banner increases click odds by 15.2% on desktop (OR=1.152, p=0.0014) — [YES] significant.
+  - MOBILE baseline vs DESKTOP baseline (control group only): mobile users have 28.2% higher click odds even without treatment (OR=1.282, p=0.0000).
+  - INTERACTION (treatment × mobile): the treatment effect is stronger on mobile than on desktop by a factor of 1.073 in odds (OR=1.073, p=0.1802) — [NO] not significant.
+  -   -> The difference between mobile and desktop effects is NOT statistically significant. The treatment effect may be uniform across devices despite the raw difference in segment-level CTR lifts.

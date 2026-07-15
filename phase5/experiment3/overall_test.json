@@ -1,0 +1,14 @@
+{
+  "ctr_control": 0.033269,
+  "ctr_treatment": 0.040052,
+  "abs_diff": 0.006783,
+  "rel_lift_pct": 20.39,
+  "z_stat": 8.0215,
+  "p_value": 0.0,
+  "ci_low": 0.005126,
+  "ci_high": 0.00844,
+  "significant": true,
+  "n_control": 98772,
+  "n_treatment": 98772,
+  "segment": "ALL_DEVICES"
+}

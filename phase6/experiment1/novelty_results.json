@@ -1,0 +1,14 @@
+{
+  "warmup_days": 3,
+  "treat_early_mean": 0.11325898389095417,
+  "treat_late_mean": 0.12006687928210895,
+  "ctrl_early_mean": 0.12205700123915737,
+  "ctrl_late_mean": 0.12141796829322869,
+  "treat_early_vs_late_t": -1.0394071220322736,
+  "treat_early_vs_late_p": 0.39794804261942374,
+  "n_early_days": 3,
+  "n_late_days": 11,
+  "novelty_magnitude_abs": -0.0068078953911547835,
+  "novelty_significant": "False",
+  "steady_state_lift": -0.0013510890111197438
+}

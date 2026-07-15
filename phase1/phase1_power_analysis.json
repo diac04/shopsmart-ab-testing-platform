@@ -1,0 +1,68 @@
+{
+  "metadata": {
+    "phase": 1,
+    "project": "ShopSmart India AB Platform",
+    "generated_at": "2026-07-04T20:03:22.575592",
+    "purpose": "Pre-registered power analysis. Phase 6 retrospective will compare these pre-registered MDE and power values against actually observed effects."
+  },
+  "traffic_assumptions": {
+    "daily_checkout_visitors": 40000,
+    "daily_homepage_visitors": 160000,
+    "daily_banner_visitors": 120000,
+    "mobile_share": 0.65,
+    "desktop_share": 0.35,
+    "source": "IAMAI 2023 benchmarks, Baymard Institute e-commerce data"
+  },
+  "experiment_1_checkout": {
+    "n_per_group": 37671,
+    "total_n": 75342,
+    "baseline_rate": 0.038,
+    "treatment_rate": 0.041999999999999996,
+    "mde_absolute": 0.004,
+    "mde_relative_pct": 10.53,
+    "alpha": 0.05,
+    "power": 0.8,
+    "cohens_h": 0.0204,
+    "days_required": 2,
+    "min_run_days": 14
+  },
+  "experiment_2_recommendations": {
+    "n_per_group": 566,
+    "total_n": 1132,
+    "baseline_mean": 850,
+    "treatment_mean": 920,
+    "baseline_std": 420,
+    "mde_absolute": 70,
+    "mde_relative_pct": 8.24,
+    "alpha": 0.05,
+    "power": 0.8,
+    "cohens_d": 0.1667,
+    "days_required": 1,
+    "min_run_days": 14,
+    "skew_warning": "Revenue data is right-skewed. t-test valid for large n via CLT. Mann-Whitney U will be applied in Phase 3 as robustness check."
+  },
+  "experiment_3_banner": {
+    "overall": {
+      "n_per_group": 14724,
+      "total_n": 29448,
+      "baseline_rate": 0.032,
+      "treatment_rate": 0.038,
+      "mde_absolute": 0.006,
+      "mde_relative_pct": 18.75,
+      "cohens_h": 0.0327
+    },
+    "segmented": {
+      "n_per_group_binding": 98772,
+      "total_n_binding": 197544,
+      "alpha_corrected": 0.025,
+      "bonferroni_applied": true,
+      "correction_note": "Bonferroni: alpha=0.05 divided by 2 segments = 0.0250",
+      "mobile_baseline": 0.035,
+      "mobile_mde": 0.008,
+      "desktop_baseline": 0.028,
+      "desktop_mde": 0.004
+    },
+    "days_required": 2,
+    "min_run_days": 14
+  }
+}

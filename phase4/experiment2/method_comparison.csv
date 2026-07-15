@@ -1,0 +1,7 @@
+method,lift_rs,p_value,significant,ci_lo,ci_hi,notes
+Log t-test (geometric mean),61.7,7.937019516213819e-15,True,1.0594,1.1013,"CI is ratio, not additive Rs."
+Log t-test (arithmetic est.),69.01,7.937019516213819e-15,True,,,Log-normal arith correction
+Mann-Whitney U,,1.9656638195269313e-08,True,,,CLES=0.528
+Bootstrap mean diff,56.35,0.0,True,37.49,75.44,"10,000 resamples"
+Bootstrap median diff,65.28,,True,41.01,87.21,"10,000 resamples"
+Delta method,,,,,,Not applicable — simple average metric

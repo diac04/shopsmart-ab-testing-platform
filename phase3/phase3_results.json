@@ -1,0 +1,395 @@
+{
+  "metadata": {
+    "phase": 3,
+    "project": "ShopSmart India AB Platform",
+    "experiment": "Exp1: Checkout Redesign",
+    "generated_at": "2026-07-11T00:33:57.738838",
+    "srm_warning": "SRM detected in Phase 2. T/C ratio=1.0833. Results are analytical only \u2014 not decision-grade."
+  },
+  "variants": {
+    "full_deduplicated_no_bots": {
+      "results": {
+        "variant": "full_deduplicated_no_bots",
+        "descriptive": {
+          "control": {
+            "n": 134133,
+            "conversions": 16153,
+            "conversion_rate": 0.120425,
+            "non_conversions": 117980
+          },
+          "treatment": {
+            "n": 145310,
+            "conversions": 17264,
+            "conversion_rate": 0.118808,
+            "non_conversions": 128046
+          }
+        },
+        "ztest": {
+          "test": "Two-proportion Z-test",
+          "z_statistic": -1.3163,
+          "p_value": 0.188081,
+          "alpha": 0.05,
+          "significant": false,
+          "direction": "treatment < control"
+        },
+        "chi_square": {
+          "test": "Chi-square test of independence",
+          "chi2_stat": 1.7326,
+          "p_value": 0.188081,
+          "dof": 1,
+          "alpha": 0.05,
+          "significant": false,
+          "contingency_table": {
+            "control_converted": 16153,
+            "control_not_converted": 117980,
+            "treatment_converted": 17264,
+            "treatment_not_converted": 128046
+          }
+        },
+        "cohens_h": {
+          "cohens_h": 0.005,
+          "magnitude": "small",
+          "prereg_cohens_h": 0.0204,
+          "vs_prereg": -0.0154
+        },
+        "confidence_interval": {
+          "point_estimate_diff": -0.001617,
+          "ci_lower": -0.004026,
+          "ci_upper": 0.000791,
+          "ci_level": 0.95,
+          "method": "Normal approximation",
+          "control_wilson_ci": [
+            0.118694,
+            0.122178
+          ],
+          "treatment_wilson_ci": [
+            0.117154,
+            0.120482
+          ],
+          "ci_excludes_zero": false
+        },
+        "lift": {
+          "control_rate": 0.120425,
+          "treatment_rate": 0.118808,
+          "absolute_lift": -0.001617,
+          "relative_lift_pct": -1.343,
+          "prereg_mde_abs": 0.004,
+          "prereg_mde_rel_pct": 10.53,
+          "observed_vs_mde": "below MDE"
+        }
+      },
+      "impact": {
+        "variant": "full_deduplicated_no_bots",
+        "assumptions": {
+          "daily_checkout_visitors": 40000,
+          "aov_inr": 1200,
+          "traffic_split_pct": 50.0,
+          "annual_days": 365,
+          "source_daily_visitors": "Phase 1 \u2014 IAMAI 2023 benchmarks",
+          "source_aov": "Statista India e-commerce 2023 avg"
+        },
+        "observed_lift": {
+          "control_rate": 0.120425,
+          "treatment_rate": 0.118808,
+          "absolute_lift": -0.001617,
+          "relative_lift_pct": -1.343
+        },
+        "50pct_rollout": {
+          "daily_treatment_users": 20000,
+          "additional_daily_conversions": -32.34,
+          "daily_revenue_impact_inr": -38812.42,
+          "annual_revenue_impact_inr": -14166532.28,
+          "annual_revenue_impact_crore": -1.417,
+          "annual_revenue_impact_lakh": -141.67
+        },
+        "100pct_rollout": {
+          "daily_treatment_users": 40000,
+          "additional_daily_conversions": -64.69,
+          "annual_revenue_impact_inr": -28333064.57,
+          "annual_revenue_impact_crore": -2.833
+        },
+        "risk_note": "SRM was detected in this experiment. All impact figures carry high uncertainty until a clean re-run is completed."
+      },
+      "recommendation": {
+        "decision": "NO-SHIP \u2014 RESTART EXPERIMENT",
+        "confidence_level": "NONE (SRM contamination)",
+        "srm_detected": true,
+        "reasoning": "A Sample Ratio Mismatch (SRM) was detected in Exp 1 (T/C ratio = 1.0833, chi2 = 447.13, p \u2248 0). This means the randomization was compromised \u2014 treatment and control groups are not comparable. Any observed lift cannot be attributed to the checkout redesign alone. The experiment MUST be restarted with a fixed randomization pipeline before any shipping decision can be made.",
+        "what_would_change_rec": "A clean re-run (no SRM, SRM chi2 p > 0.01) showing p < 0.05 and absolute lift \u2265 0.004 (10.53% relative) would change this recommendation to SHIP.",
+        "pm_recommendation": "RECOMMENDATION: NO-SHIP \u2014 RESTART EXPERIMENT\n\n\u26a0\ufe0f  CRITICAL: A Sample Ratio Mismatch was detected, meaning the experiment's randomization was broken. The numbers below are reported for completeness but CANNOT be used as the basis for a shipping decision. The experiment must be restarted.\n\nThe checkout redesign experiment ran for 22 days on ShopSmart India's checkout funnel (40,000 daily visitors). The treatment group showed a conversion rate of 11.88% vs. 12.04% in control \u2014 a relative lift of -1.34% (95% CI: -0.0040 to +0.0008). At our assumed AOV of \u20b91,200 and 50% traffic allocation, this translates to a projected annual revenue impact of \u20b9-1.42 Crore.\n\nA Sample Ratio Mismatch (SRM) was detected in Exp 1 (T/C ratio = 1.0833, chi2 = 447.13, p \u2248 0). This means the randomization was compromised \u2014 treatment and control groups are not comparable. Any observed lift cannot be attributed to the checkout redesign alone. The experiment MUST be restarted with a fixed randomization pipeline before any shipping decision can be made.\n\nWhat would change this recommendation: A clean re-run (no SRM, SRM chi2 p > 0.01) showing p < 0.05 and absolute lift \u2265 0.004 (10.53% relative) would change this recommendation to SHIP.",
+        "phase6_save": {
+          "observed_cohens_h": 0.005,
+          "observed_lift_abs": -0.001617,
+          "observed_lift_rel_pct": -1.343,
+          "prereg_cohens_h": 0.0204,
+          "prereg_mde_abs": 0.004,
+          "significant": false,
+          "p_value": 0.188081,
+          "note": "Phase 6 power retrospective will compare these observed values to pre-registered values."
+        }
+      }
+    },
+    "full_deduplicated_with_bots": {
+      "results": {
+        "variant": "full_deduplicated_with_bots",
+        "descriptive": {
+          "control": {
+            "n": 134133,
+            "conversions": 16153,
+            "conversion_rate": 0.120425,
+            "non_conversions": 117980
+          },
+          "treatment": {
+            "n": 145310,
+            "conversions": 17264,
+            "conversion_rate": 0.118808,
+            "non_conversions": 128046
+          }
+        },
+        "ztest": {
+          "test": "Two-proportion Z-test",
+          "z_statistic": -1.3163,
+          "p_value": 0.188081,
+          "alpha": 0.05,
+          "significant": false,
+          "direction": "treatment < control"
+        },
+        "chi_square": {
+          "test": "Chi-square test of independence",
+          "chi2_stat": 1.7326,
+          "p_value": 0.188081,
+          "dof": 1,
+          "alpha": 0.05,
+          "significant": false,
+          "contingency_table": {
+            "control_converted": 16153,
+            "control_not_converted": 117980,
+            "treatment_converted": 17264,
+            "treatment_not_converted": 128046
+          }
+        },
+        "cohens_h": {
+          "cohens_h": 0.005,
+          "magnitude": "small",
+          "prereg_cohens_h": 0.0204,
+          "vs_prereg": -0.0154
+        },
+        "confidence_interval": {
+          "point_estimate_diff": -0.001617,
+          "ci_lower": -0.004026,
+          "ci_upper": 0.000791,
+          "ci_level": 0.95,
+          "method": "Normal approximation",
+          "control_wilson_ci": [
+            0.118694,
+            0.122178
+          ],
+          "treatment_wilson_ci": [
+            0.117154,
+            0.120482
+          ],
+          "ci_excludes_zero": false
+        },
+        "lift": {
+          "control_rate": 0.120425,
+          "treatment_rate": 0.118808,
+          "absolute_lift": -0.001617,
+          "relative_lift_pct": -1.343,
+          "prereg_mde_abs": 0.004,
+          "prereg_mde_rel_pct": 10.53,
+          "observed_vs_mde": "below MDE"
+        }
+      },
+      "impact": {
+        "variant": "full_deduplicated_with_bots",
+        "assumptions": {
+          "daily_checkout_visitors": 40000,
+          "aov_inr": 1200,
+          "traffic_split_pct": 50.0,
+          "annual_days": 365,
+          "source_daily_visitors": "Phase 1 \u2014 IAMAI 2023 benchmarks",
+          "source_aov": "Statista India e-commerce 2023 avg"
+        },
+        "observed_lift": {
+          "control_rate": 0.120425,
+          "treatment_rate": 0.118808,
+          "absolute_lift": -0.001617,
+          "relative_lift_pct": -1.343
+        },
+        "50pct_rollout": {
+          "daily_treatment_users": 20000,
+          "additional_daily_conversions": -32.34,
+          "daily_revenue_impact_inr": -38812.42,
+          "annual_revenue_impact_inr": -14166532.28,
+          "annual_revenue_impact_crore": -1.417,
+          "annual_revenue_impact_lakh": -141.67
+        },
+        "100pct_rollout": {
+          "daily_treatment_users": 40000,
+          "additional_daily_conversions": -64.69,
+          "annual_revenue_impact_inr": -28333064.57,
+          "annual_revenue_impact_crore": -2.833
+        },
+        "risk_note": "SRM was detected in this experiment. All impact figures carry high uncertainty until a clean re-run is completed."
+      },
+      "recommendation": {
+        "decision": "NO-SHIP \u2014 RESTART EXPERIMENT",
+        "confidence_level": "NONE (SRM contamination)",
+        "srm_detected": true,
+        "reasoning": "A Sample Ratio Mismatch (SRM) was detected in Exp 1 (T/C ratio = 1.0833, chi2 = 447.13, p \u2248 0). This means the randomization was compromised \u2014 treatment and control groups are not comparable. Any observed lift cannot be attributed to the checkout redesign alone. The experiment MUST be restarted with a fixed randomization pipeline before any shipping decision can be made.",
+        "what_would_change_rec": "A clean re-run (no SRM, SRM chi2 p > 0.01) showing p < 0.05 and absolute lift \u2265 0.004 (10.53% relative) would change this recommendation to SHIP.",
+        "pm_recommendation": "RECOMMENDATION: NO-SHIP \u2014 RESTART EXPERIMENT\n\n\u26a0\ufe0f  CRITICAL: A Sample Ratio Mismatch was detected, meaning the experiment's randomization was broken. The numbers below are reported for completeness but CANNOT be used as the basis for a shipping decision. The experiment must be restarted.\n\nThe checkout redesign experiment ran for 22 days on ShopSmart India's checkout funnel (40,000 daily visitors). The treatment group showed a conversion rate of 11.88% vs. 12.04% in control \u2014 a relative lift of -1.34% (95% CI: -0.0040 to +0.0008). At our assumed AOV of \u20b91,200 and 50% traffic allocation, this translates to a projected annual revenue impact of \u20b9-1.42 Crore.\n\nA Sample Ratio Mismatch (SRM) was detected in Exp 1 (T/C ratio = 1.0833, chi2 = 447.13, p \u2248 0). This means the randomization was compromised \u2014 treatment and control groups are not comparable. Any observed lift cannot be attributed to the checkout redesign alone. The experiment MUST be restarted with a fixed randomization pipeline before any shipping decision can be made.\n\nWhat would change this recommendation: A clean re-run (no SRM, SRM chi2 p > 0.01) showing p < 0.05 and absolute lift \u2265 0.004 (10.53% relative) would change this recommendation to SHIP.",
+        "phase6_save": {
+          "observed_cohens_h": 0.005,
+          "observed_lift_abs": -0.001617,
+          "observed_lift_rel_pct": -1.343,
+          "prereg_cohens_h": 0.0204,
+          "prereg_mde_abs": 0.004,
+          "significant": false,
+          "p_value": 0.188081,
+          "note": "Phase 6 power retrospective will compare these observed values to pre-registered values."
+        }
+      }
+    },
+    "late_period_no_bots": {
+      "results": {
+        "variant": "late_period_no_bots",
+        "descriptive": {
+          "control": {
+            "n": 97707,
+            "conversions": 11799,
+            "conversion_rate": 0.120759,
+            "non_conversions": 85908
+          },
+          "treatment": {
+            "n": 105624,
+            "conversions": 12593,
+            "conversion_rate": 0.119225,
+            "non_conversions": 93031
+          }
+        },
+        "ztest": {
+          "test": "Two-proportion Z-test",
+          "z_statistic": -1.0638,
+          "p_value": 0.287426,
+          "alpha": 0.05,
+          "significant": false,
+          "direction": "treatment < control"
+        },
+        "chi_square": {
+          "test": "Chi-square test of independence",
+          "chi2_stat": 1.1316,
+          "p_value": 0.287426,
+          "dof": 1,
+          "alpha": 0.05,
+          "significant": false,
+          "contingency_table": {
+            "control_converted": 11799,
+            "control_not_converted": 85908,
+            "treatment_converted": 12593,
+            "treatment_not_converted": 93031
+          }
+        },
+        "cohens_h": {
+          "cohens_h": 0.0047,
+          "magnitude": "small",
+          "prereg_cohens_h": 0.0204,
+          "vs_prereg": -0.0157
+        },
+        "confidence_interval": {
+          "point_estimate_diff": -0.001534,
+          "ci_lower": -0.004361,
+          "ci_upper": 0.001293,
+          "ci_level": 0.95,
+          "method": "Normal approximation",
+          "control_wilson_ci": [
+            0.118731,
+            0.122817
+          ],
+          "treatment_wilson_ci": [
+            0.117284,
+            0.121193
+          ],
+          "ci_excludes_zero": false
+        },
+        "lift": {
+          "control_rate": 0.120759,
+          "treatment_rate": 0.119225,
+          "absolute_lift": -0.001534,
+          "relative_lift_pct": -1.27,
+          "prereg_mde_abs": 0.004,
+          "prereg_mde_rel_pct": 10.53,
+          "observed_vs_mde": "below MDE"
+        }
+      },
+      "impact": {
+        "variant": "late_period_no_bots",
+        "assumptions": {
+          "daily_checkout_visitors": 40000,
+          "aov_inr": 1200,
+          "traffic_split_pct": 50.0,
+          "annual_days": 365,
+          "source_daily_visitors": "Phase 1 \u2014 IAMAI 2023 benchmarks",
+          "source_aov": "Statista India e-commerce 2023 avg"
+        },
+        "observed_lift": {
+          "control_rate": 0.120759,
+          "treatment_rate": 0.119225,
+          "absolute_lift": -0.001534,
+          "relative_lift_pct": -1.27
+        },
+        "50pct_rollout": {
+          "daily_treatment_users": 20000,
+          "additional_daily_conversions": -30.68,
+          "daily_revenue_impact_inr": -36820.96,
+          "annual_revenue_impact_inr": -13439649.52,
+          "annual_revenue_impact_crore": -1.344,
+          "annual_revenue_impact_lakh": -134.4
+        },
+        "100pct_rollout": {
+          "daily_treatment_users": 40000,
+          "additional_daily_conversions": -61.37,
+          "annual_revenue_impact_inr": -26879299.04,
+          "annual_revenue_impact_crore": -2.688
+        },
+        "risk_note": "SRM was detected in this experiment. All impact figures carry high uncertainty until a clean re-run is completed."
+      },
+      "recommendation": {
+        "decision": "NO-SHIP \u2014 RESTART EXPERIMENT",
+        "confidence_level": "NONE (SRM contamination)",
+        "srm_detected": true,
+        "reasoning": "A Sample Ratio Mismatch (SRM) was detected in Exp 1 (T/C ratio = 1.0833, chi2 = 447.13, p \u2248 0). This means the randomization was compromised \u2014 treatment and control groups are not comparable. Any observed lift cannot be attributed to the checkout redesign alone. The experiment MUST be restarted with a fixed randomization pipeline before any shipping decision can be made.",
+        "what_would_change_rec": "A clean re-run (no SRM, SRM chi2 p > 0.01) showing p < 0.05 and absolute lift \u2265 0.004 (10.53% relative) would change this recommendation to SHIP.",
+        "pm_recommendation": "RECOMMENDATION: NO-SHIP \u2014 RESTART EXPERIMENT\n\n\u26a0\ufe0f  CRITICAL: A Sample Ratio Mismatch was detected, meaning the experiment's randomization was broken. The numbers below are reported for completeness but CANNOT be used as the basis for a shipping decision. The experiment must be restarted.\n\nThe checkout redesign experiment ran for 22 days on ShopSmart India's checkout funnel (40,000 daily visitors). The treatment group showed a conversion rate of 11.92% vs. 12.08% in control \u2014 a relative lift of -1.27% (95% CI: -0.0044 to +0.0013). At our assumed AOV of \u20b91,200 and 50% traffic allocation, this translates to a projected annual revenue impact of \u20b9-1.34 Crore.\n\nA Sample Ratio Mismatch (SRM) was detected in Exp 1 (T/C ratio = 1.0833, chi2 = 447.13, p \u2248 0). This means the randomization was compromised \u2014 treatment and control groups are not comparable. Any observed lift cannot be attributed to the checkout redesign alone. The experiment MUST be restarted with a fixed randomization pipeline before any shipping decision can be made.\n\nWhat would change this recommendation: A clean re-run (no SRM, SRM chi2 p > 0.01) showing p < 0.05 and absolute lift \u2265 0.004 (10.53% relative) would change this recommendation to SHIP.",
+        "phase6_save": {
+          "observed_cohens_h": 0.0047,
+          "observed_lift_abs": -0.001534,
+          "observed_lift_rel_pct": -1.27,
+          "prereg_cohens_h": 0.0204,
+          "prereg_mde_abs": 0.004,
+          "significant": false,
+          "p_value": 0.287426,
+          "note": "Phase 6 power retrospective will compare these observed values to pre-registered values."
+        }
+      }
+    }
+  },
+  "primary_recommendation": {
+    "decision": "NO-SHIP \u2014 RESTART EXPERIMENT",
+    "confidence_level": "NONE (SRM contamination)",
+    "srm_detected": true,
+    "reasoning": "A Sample Ratio Mismatch (SRM) was detected in Exp 1 (T/C ratio = 1.0833, chi2 = 447.13, p \u2248 0). This means the randomization was compromised \u2014 treatment and control groups are not comparable. Any observed lift cannot be attributed to the checkout redesign alone. The experiment MUST be restarted with a fixed randomization pipeline before any shipping decision can be made.",
+    "what_would_change_rec": "A clean re-run (no SRM, SRM chi2 p > 0.01) showing p < 0.05 and absolute lift \u2265 0.004 (10.53% relative) would change this recommendation to SHIP.",
+    "pm_recommendation": "RECOMMENDATION: NO-SHIP \u2014 RESTART EXPERIMENT\n\n\u26a0\ufe0f  CRITICAL: A Sample Ratio Mismatch was detected, meaning the experiment's randomization was broken. The numbers below are reported for completeness but CANNOT be used as the basis for a shipping decision. The experiment must be restarted.\n\nThe checkout redesign experiment ran for 22 days on ShopSmart India's checkout funnel (40,000 daily visitors). The treatment group showed a conversion rate of 11.88% vs. 12.04% in control \u2014 a relative lift of -1.34% (95% CI: -0.0040 to +0.0008). At our assumed AOV of \u20b91,200 and 50% traffic allocation, this translates to a projected annual revenue impact of \u20b9-1.42 Crore.\n\nA Sample Ratio Mismatch (SRM) was detected in Exp 1 (T/C ratio = 1.0833, chi2 = 447.13, p \u2248 0). This means the randomization was compromised \u2014 treatment and control groups are not comparable. Any observed lift cannot be attributed to the checkout redesign alone. The experiment MUST be restarted with a fixed randomization pipeline before any shipping decision can be made.\n\nWhat would change this recommendation: A clean re-run (no SRM, SRM chi2 p > 0.01) showing p < 0.05 and absolute lift \u2265 0.004 (10.53% relative) would change this recommendation to SHIP.",
+    "phase6_save": {
+      "observed_cohens_h": 0.005,
+      "observed_lift_abs": -0.001617,
+      "observed_lift_rel_pct": -1.343,
+      "prereg_cohens_h": 0.0204,
+      "prereg_mde_abs": 0.004,
+      "significant": false,
+      "p_value": 0.188081,
+      "note": "Phase 6 power retrospective will compare these observed values to pre-registered values."
+    }
+  }
+}

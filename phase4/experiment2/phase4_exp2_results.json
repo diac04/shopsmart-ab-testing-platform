@@ -1,0 +1,36 @@
+{
+  "experiment": "Experiment 2 \u2014 Personalized Recommendations",
+  "primary_period": "Days 7-14",
+  "primary_method": "Bootstrap CI on CUPED-adjusted mean difference",
+  "trusted_lift_rs": 18.9,
+  "ci_lo": 8.92,
+  "ci_hi": 28.91,
+  "significant": true,
+  "cohens_d_raw": 0.1026,
+  "cohens_d_cuped": 0.0647,
+  "variance_reduction_pct": 71.74,
+  "users_saved_per_group": 406,
+  "annual_impact_point_rs": 1133725185.0,
+  "annual_impact_cons_rs": 535200000.0,
+  "overestimation_avoided_rs": 2247463141.0,
+  "outlier_verdict": "ROBUST",
+  "recommendation": "SHIP",
+  "diagnostics": {
+    "shapiro_ctrl_normal": false,
+    "shapiro_treat_normal": false,
+    "skew_ctrl": 0.8307,
+    "skew_treat": 1.1956,
+    "kurt_treat": 6.8393
+  },
+  "method_comparison": {
+    "log_ttest_geo_lift": 61.7,
+    "log_ttest_arith_lift": 69.01,
+    "bootstrap_mean_lift": 56.35,
+    "mw_cles": 0.528,
+    "delta_applicable": false
+  },
+  "written_decisions": {
+    "method_justification": "WRITTEN DECISION 1 \u2014 METHOD JUSTIFICATION\n==========================================\n\nFor the final report, the primary method is the bootstrap confidence\ninterval on the CUPED-adjusted mean difference, yielding a lift of\nRs.18.90 (95% CI: Rs.8.92 to Rs.28.91, p < 0.001).\n\nHere is the reasoning for choosing this over the alternatives:\n\nThe log-transform t-test was rejected as the primary method for two\nreasons. First, it operates on purchasers only, silently discarding\nthe 34% of users with zero revenue. Since zero-revenue users are a\nmeaningful economic signal \u2014 a user who did not purchase is genuinely\ndifferent from one who did \u2014 excluding them biases the estimate upward\nand misrepresents the population-level effect. Second, and more\ncritically, the back-transformation caveat is non-trivial: exp(mu) on\nthe log scale gives the geometric mean, not the arithmetic mean.\nReporting a geometric-mean lift to a business stakeholder who is\nthinking in terms of total revenue is technically incorrect. The\nlog-normal arithmetic correction (exp(mu + sigma^2/2)) exists but\nintroduces additional assumptions about distributional form that are\nnot necessary when a better method is available. The log t-test is a\nuseful robustness check \u2014 and it confirms significance \u2014 but it should\nnot be the headline number.\n\nThe Mann-Whitney U test was rejected as the primary method because it\ndoes not produce an estimate of the mean revenue difference in rupees.\nThe CLES of 0.528 tells us that a treatment user has a 52.8% chance of\nhigher revenue than a control user, which is a valid finding, but it\ncannot be directly converted to a business impact figure. A product\nmanager cannot take \"CLES=0.528\" to a budget conversation. Mann-Whitney\nis retained as a robustness check confirming that the distributional\nshift is real (p=1.97e-08), but it is not the reportable estimate.\n\nThe delta method was explicitly determined to be inapplicable. Revenue-\nper-user in this design is a simple arithmetic mean \u2014 total group\nrevenue divided by n_assigned_users, where the denominator is fixed by\nrandomisation. The delta method is required only when both numerator and\ndenominator are random variables (for example, revenue-per-session where\none user may have multiple sessions). That condition does not hold here.\n\nThe bootstrap CI on the CUPED-adjusted mean difference is the correct\nchoice for three reasons. First, it makes no distributional assumption \u2014\nit is valid for right-skewed, zero-inflated, heavy-tailed data by\nconstruction. Second, it operates on all users including zeros, so it\nestimates the true population-level effect. Third, and most importantly,\nit is applied after CUPED adjustment, which removes the Rs.37.46 of\npre-experiment revenue imbalance that was inflating the raw lift. The\nCUPED step is not optional here \u2014 Phase 2 flagged a statistically\nsignificant pre-experiment difference (p=0.000, permutation test), and\nwithout correction we would have reported a lift of Rs.56.35 that is\nnearly 3x the true causal effect. The bootstrap CI then provides honest\nuncertainty quantification around the corrected estimate. Both the Welch\nt-test and bootstrap agree on Rs.18.90 with overlapping CIs, which\ngives us confidence the result is not a computational artifact.",
+    "outlier_verdict": "WRITTEN DECISION 2 \u2014 OUTLIER VERDICT\n======================================\n\nThe lift is ROBUST. It is not an artifact of a small cluster of\nhigh-value outlier accounts.\n\nThe evidence is as follows. When we remove the top 0.1% of users by\nrevenue from both groups, the lift moves from Rs.56.35 to Rs.55.22 \u2014\na change of Rs.1.13, or 2.0%. Removing the top 1.0% moves it to\nRs.53.89 \u2014 a change of Rs.2.46, or 4.4%. Winsorising at the 1st and\n99th percentile produces Rs.55.08. Across all six outlier-treatment\nscenarios tested, the lift remains in the range Rs.53.47 to Rs.55.22,\nalways statistically significant, always with a confidence interval\nthat excludes zero. A result that is driven by a handful of whale\naccounts would collapse under even mild trimming. This one does not.\n\nHowever, the band analysis reveals something more nuanced. Splitting\npurchasers into revenue bands, the lift across bands 1 through 5 (the\nbottom 99% of purchasers) is small and inconsistent in direction:\n+Rs.2.55 in the bottom quartile, +Rs.4.10 in the second quartile,\n+Rs.6.56 in the third, +Rs.0.20 in the 75th-90th percentile band, and\n-Rs.11.77 in the 90th-99th band. None of these are economically\nmeaningful individually. The top 1% band shows +Rs.111.79, but with\nonly n=30 control and n=56 treatment users \u2014 sample sizes too small\nto be reliable, and the imbalance in counts (30 vs 56) is itself a\nsymptom of the pre-experiment group composition difference that CUPED\ncorrects for.\n\nThe conclusion is that the raw lift of Rs.56.35 is not driven by\noutliers in the statistical sense \u2014 it survives trimming and\nwinsorisation robustly. It is driven by pre-experiment group\ncomposition: the treatment group contained users who were systematically\nhigher spenders before the experiment began. That is a selection bias\nissue, not an outlier issue. CUPED correctly identifies and removes\nthis bias, reducing the lift to the honest causal estimate of Rs.18.90.\nThis is the number we stand behind. It is statistically significant\n(p < 0.001), robust to distributional assumptions (confirmed by both\nt-test and bootstrap), and corrected for the pre-experiment imbalance\nflagged in Phase 2."
+  }
+}

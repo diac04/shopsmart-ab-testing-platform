@@ -1,0 +1,87 @@
+
+──────────────────────────────────────────────────────────────────────────────
+WRITTEN PARAGRAPH 1 — Multiple Comparison Correction: Justification
+──────────────────────────────────────────────────────────────────────────────
+
+When running a single hypothesis test, the Type I error rate is controlled at
+α = 0.05 by construction. But when we test the same treatment across three
+device segments (mobile, desktop, tablet), the family-wise error rate (FWER)
+inflates: the probability of at least one false positive across all three tests
+is 1 − (1 − 0.05)³ ≈ 14.3%. That means we would expect a spurious "significant"
+result more than 1-in-7 times even if the banner had zero true effect on any
+device — an unacceptable risk when a false positive means shipping a degraded
+banner experience to millions of users.
+
+BONFERRONI vs. BENJAMINI-HOCHBERG:
+
+Bonferroni (FWER control) divides α by the number of comparisons
+(α' = 0.05 / 3 ≈ 0.0167). It guarantees that the probability of *any*
+false positive in the family is ≤ 5%. This is the appropriate method for
+*confirmatory* experiments where each comparison is pre-specified and a single
+false positive would directly trigger a product decision — i.e., shipping a
+bad experience to a real user cohort.
+
+Benjamini-Hochberg FDR controls the *expected proportion* of discoveries that
+are false (the False Discovery Rate), not the probability of any false positive.
+It is more powerful (fewer false negatives) and is the right tool for
+*exploratory* scans — for example, scanning 50+ secondary metrics in a single
+experiment, or running a weekly automated anomaly-detection pass across hundreds
+of metric × segment combinations. There, you accept that perhaps 5% of the
+"significant" flags will be wrong, which is fine when a human analyst reviews
+the shortlist before acting.
+
+WHICH ONE APPLIES HERE:
+
+This experiment — Experiment 3, discount banner placement — is confirmatory,
+not exploratory. The three device segments (mobile, desktop, tablet) were
+pre-specified in Phase 1 as the exact segments of interest, not discovered
+post-hoc. Each significant result would directly justify shipping the new banner
+to that device type, affecting millions of real users. A false positive here
+does not produce a footnote in a report; it triggers an irreversible product
+change. Therefore, Bonferroni correction is the appropriate and conservative
+choice. BH-FDR is reported alongside for transparency and comparison,
+but the decision rule is based on Bonferroni-adjusted p-values.
+──────────────────────────────────────────────────────────────────────────────
+
+
+──────────────────────────────────────────────────────────────────────────────
+WRITTEN PARAGRAPH 2 — Business Recommendation + ₹ Cost of Uncorrected Decision
+──────────────────────────────────────────────────────────────────────────────
+
+Estimated monthly cost of shipping on uncorrected p-values: ₹0
+
+ROLLOUT DECISION SUMMARY
+─────────────────────────────────────────────────────────────────
+SHIP treatment banner   : mobile, desktop
+HOLD (keep control)     : none
+DO NOT SHIP (block)     : none
+
+HETEROGENEOUS TREATMENT EFFECT:
+Mobile produced the larger observed relative CTR lift, but the treatment-by-mobile interaction is not statistically significant (interaction OR=1.073, p=0.1802). Therefore, Phase 1's directional expectation is supported descriptively, but it is not formally confirmed. We cannot conclude that the treatment effect differs between mobile and desktop.
+
+BUSINESS DECISION:
+Both mobile and desktop show positive CTR effects that remain
+statistically significant after Bonferroni correction. Therefore,
+enable the top discount banner on both mobile and desktop. Do not
+restrict rollout to mobile merely because its observed lift is larger;
+the formal interaction test does not show a statistically reliable
+difference between device effects.
+
+UNCORRECTED DECISION COST:
+Skipping multiple-comparison correction would not have changed the
+rollout decision in this experiment because both device results remain
+significant after Bonferroni and BH-FDR correction. Consequently, the
+estimated incremental monthly false-positive cost attributable to using
+uncorrected p-values is ₹0. This is specific to the observed
+results and does not imply that correction is unnecessary in future
+experiments.
+
+ENGINEERING ACTION ITEMS:
+  1. Enable the top-banner treatment for mobile.
+  2. Enable the top-banner treatment for desktop.
+  3. Keep device-level feature flags for monitoring and rollback.
+  4. Monitor CTR and guardrail metrics separately by device after launch.
+  5. If proving a stronger mobile effect remains important, run a
+     separately powered follow-up interaction experiment.
+─────────────────────────────────────────────────────────────────
+──────────────────────────────────────────────────────────────────────────────

@@ -1,0 +1,38 @@
+{
+  "uniform": {
+    "label": "Beta(1,1) \u2014 Uniform (primary)",
+    "prob_better": 0.09435,
+    "loss_ship": 0.0016698,
+    "loss_keep": 5.47e-05,
+    "ship_decision": false,
+    "delta_mean": -0.001615,
+    "delta_95ci": [
+      -0.004023,
+      0.000807
+    ]
+  },
+  "weakly": {
+    "label": "Beta(2,2) \u2014 Weakly informative (sensitivity)",
+    "prob_better": 0.0943,
+    "loss_ship": 0.0016702,
+    "loss_keep": 5.47e-05,
+    "ship_decision": false,
+    "delta_mean": -0.001615,
+    "delta_95ci": [
+      -0.004023,
+      0.000807
+    ]
+  },
+  "informed": {
+    "label": "Beta(3.8,96.2) \u2014 Centred on baseline 3.8%",
+    "prob_better": 0.09509,
+    "loss_ship": 0.001664,
+    "loss_keep": 5.52e-05,
+    "ship_decision": false,
+    "delta_mean": -0.001609,
+    "delta_95ci": [
+      -0.004015,
+      0.000812
+    ]
+  }
+}

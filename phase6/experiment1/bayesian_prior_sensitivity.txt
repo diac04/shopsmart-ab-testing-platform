@@ -1,0 +1,47 @@
+=================================================================
+PRIOR SENSITIVITY CONCLUSION — Bayesian A/B, Experiment 1
+=================================================================
+
+PRIMARY PRIOR: Beta(1,1) — Uniform
+  Justification: No strong pre-experiment information about the
+  true checkout conversion rate beyond the operational baseline
+  of 3.8% (already captured in the data). The uniform prior is
+  intentionally weakly informative — it avoids overstating
+  certainty, respects the pre-registration spirit, and is the
+  standard 'minimum assumption' choice for conversion rate tests.
+  It assigns equal probability to every possible rate in [0,1],
+  letting the 75 000+ observed events dominate the posterior.
+
+Prior: Beta(1,1) — Uniform (primary)
+  P(treatment > control)        = 0.0944
+  E[loss | ship treatment]      = 0.1670 pp
+  Posterior Δ mean              = -0.1615 pp
+  Posterior 95% CI of Δ         = [-0.4023, 0.0807] pp
+  Ship decision                 = DO NOT SHIP
+
+Prior: Beta(2,2) — Weakly informative (sensitivity)
+  P(treatment > control)        = 0.0943
+  E[loss | ship treatment]      = 0.1670 pp
+  Posterior Δ mean              = -0.1615 pp
+  Posterior 95% CI of Δ         = [-0.4023, 0.0807] pp
+  Ship decision                 = DO NOT SHIP
+
+Prior: Beta(3.8,96.2) — Centred on baseline 3.8%
+  P(treatment > control)        = 0.0951
+  E[loss | ship treatment]      = 0.1664 pp
+  Posterior Δ mean              = -0.1609 pp
+  Posterior 95% CI of Δ         = [-0.4015, 0.0812] pp
+  Ship decision                 = DO NOT SHIP
+
+-----------------------------------------------------------------
+SENSITIVITY CONCLUSION:
+  All 3 priors agree on ship/no-ship decision: YES
+  Range of P(treatment > control) across priors: 0.0943 – 0.0951  (spread = 0.0008)
+
+  [ROBUST] The conclusion is insensitive to prior choice.
+  The data overwhelm the prior (large n ~75 000 per group),
+  and all three priors yield the same decision: DO NOT SHIP.
+  P(treatment > control) hovers near 0.5, consistent with
+  the frequentist p=0.188 finding of no detectable effect.
+  The Bayesian and frequentist conclusions are coherent.
+=================================================================

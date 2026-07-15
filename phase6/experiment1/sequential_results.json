@@ -1,0 +1,64 @@
+{
+  "peeking_fpr": 0.3547,
+  "nominal_alpha": 0.05,
+  "sprt": {
+    "A": 2.772588722239781,
+    "B": -1.5581446180465497,
+    "stopped_at_n": 600,
+    "decision": "reject_H0_ship",
+    "n_total": 134133
+  },
+  "obrien_fleming": [
+    {
+      "look": 1,
+      "n_at_look": 7534,
+      "fraction": 0.2,
+      "z_boundary": 4.3826,
+      "p_boundary": 1.2e-05,
+      "alpha_spent": 1.2e-05
+    },
+    {
+      "look": 2,
+      "n_at_look": 15068,
+      "fraction": 0.4,
+      "z_boundary": 3.099,
+      "p_boundary": 0.001942,
+      "alpha_spent": 0.001942
+    },
+    {
+      "look": 3,
+      "n_at_look": 22602,
+      "fraction": 0.6,
+      "z_boundary": 2.5303,
+      "p_boundary": 0.011396,
+      "alpha_spent": 0.011396
+    },
+    {
+      "look": 4,
+      "n_at_look": 30136,
+      "fraction": 0.8,
+      "z_boundary": 2.1913,
+      "p_boundary": 0.02843,
+      "alpha_spent": 0.02843
+    },
+    {
+      "look": 5,
+      "n_at_look": 37671,
+      "fraction": 1.0,
+      "z_boundary": 1.96,
+      "p_boundary": 0.05,
+      "alpha_spent": 0.05
+    }
+  ],
+  "cost_of_delay": {
+    "n_at_sprt_stop": 600,
+    "n_full_run": 37671,
+    "days_at_sprt": 0.03,
+    "days_full_run": 1.88,
+    "days_saved": 1.85,
+    "daily_revenue_impact_inr": 136000,
+    "total_inr_saved": 252083.0,
+    "decision": "reject_H0_ship",
+    "note": "Cost-of-delay is hypothetical: it assumes the treatment had achieved the pre-registered MDE (+0.4pp). In reality, Phase 3 showed near-zero lift, so SPRT would NOT stop early under H1 \u2014 it would accumulate evidence toward H0."
+  }
+}

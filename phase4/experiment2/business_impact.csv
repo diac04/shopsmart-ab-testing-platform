@@ -1,0 +1,17 @@
+metric,value
+CUPED lift (Rs.),18.9
+95% CI lower (Rs.),8.92
+95% CI upper (Rs.),28.91
+Relative lift (%),2.22
+MAU,5000000.0
+Monthly impact point (Rs.),94477099.0
+Monthly impact conservative (Rs.),44600000.0
+Monthly impact optimistic (Rs.),144550000.0
+Annual impact point (Rs.),1133725185.0
+Annual impact conservative (Rs.),535200000.0
+Annual impact optimistic (Rs.),1734600000.0
+Raw lift (Rs.),56.35
+Raw annual impact (Rs.),3381188326.0
+Overestimation avoided per year (Rs.),2247463141.0
+Cohen's d (raw),0.1026
+Cohen's d (CUPED),0.0647

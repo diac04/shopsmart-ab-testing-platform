@@ -1,0 +1,274 @@
+========================================================================
+SHOPSMART INDIA — A/B TESTING PLATFORM
+PHASE 7: EXECUTIVE BUSINESS SUMMARY & DECISION FRAMEWORK
+========================================================================
+
+THREE EXPERIMENTS | TWO SHIPS | ONE RESTART
+
+────────────────────────────────────────────────────────────────────────
+SECTION 1 — EXPERIMENT BUSINESS SUMMARIES
+────────────────────────────────────────────────────────────────────────
+
+EXPERIMENT 1: UPI CHECKOUT REDESIGN
+Decision: DO NOT SHIP — Restart experiment after SRM fix
+
+  Direction        : NEGATIVE — treatment worse than control
+  Avoided loss     : ₹1.40 Crore/year (50% rollout)
+                     ₹2.79 Crore/year (100% rollout)
+  Protected revenue: ₹17.00 Lakh/month (SPRT stopped early, Phase 6)
+  Protected revenue: ₹2.04 Crore/year
+
+  Cost-of-Delay Narrative:
+  Had the true effect been +0.40 pp (the pre-registered MDE), each month of delay would have cost ₹2,52,083 in foregone revenue. Because the observed effect is NEGATIVE, faster shipping would have destroyed value — the SPRT correctly stopped at n=600, protecting ₹17 lakh/month that would have been lost to a premature rollout.
+
+  Assumptions:
+    • Daily visitors = 40,000 | 50/50 split → 20,000 treatment/day
+    • AOV = ₹1,200
+    • Observed lift = -0.162 pp (from Phase 3, SRM-flagged, HIGH UNCERTAINTY)
+    • Bayesian E[loss|ship] = 0.1670 pp (Phase 6, Beta(1,1) prior)
+    • Protected revenue = ₹17 lakh/month (Phase 6 sequential)
+    • Cost-of-delay = ₹2,52,083/month (Phase 6 counterfactual at MDE)
+    • Dev cost = ₹5 lakh (assumption — confirm with engineering)
+    • SRM present: all figures HIGH UNCERTAINTY
+
+EXPERIMENT 2: PERSONALIZED RECOMMENDATIONS
+Decision: SHIP — Full rollout (100%)
+
+  CUPED lift       : ₹18.90/user/month
+  95% CI           : [₹8.92, ₹28.91]
+  Monthly revenue  : ₹226.80 Lakh
+  Annual (consv.)  : ₹53.52 Crore  ← QUOTE TO LEADERSHIP
+  Annual (point)   : ₹113.37 Crore  (upper bound)
+  Overstatement    : ₹22.50 Crore/year avoided (raw lift rejected)
+  Dev cost         : ₹20.00 Lakh
+  Payback period   : 1.3 days (0.0448 months) — dev cost recovered in under 2 days on conservative estimate
+  Payback detail   : Dev cost ₹2,000,000 recovered in 1.3 days at conservative monthly gain of ₹44,600,000/month
+
+  Outlier Robustness Caveat:
+  Raw lift of ₹56.35/user was rejected due to pre-experiment group composition bias (not outliers). CUPED removed ₹37.46 of bias. Outlier robustness confirmed: trimming at 1%, 5%, 10% all yielded stable raw lifts (₹53–₹56), so the issue was group imbalance, not extreme users. Leadership should use ₹53.52 Crore/year (conservative) — quoting ₹113 Crore risks credibility if actuals come in lower.
+
+  Assumptions:
+    • Daily visitors = 40,000 | after ship: 100% rollout (all users)
+    • CUPED lift = ₹18.90/user/month (Phase 4, bootstrap 95% CI [₹8.92, ₹28.91])
+    • Conservative annual = ₹53.52 Crore (Phase 4 bootstrap lower CI)
+    • Point estimate annual = ₹113.37 Crore (Phase 4 bootstrap mean)
+    • Raw lift ₹56.35/user REJECTED — pre-experiment bias confirmed by CUPED
+    • Outlier trimming 1–10%: lift stable ₹53–₹56 → root cause is group bias
+    • Dev cost = ₹20 lakh (ML infra + serving layer — confirm with engineering)
+    • Payback = dev cost ÷ monthly conservative revenue
+    • Analysis window: Days 7–14 only (novelty filter from Phase 2)
+
+EXPERIMENT 3: DISCOUNT BANNER PLACEMENT
+Decision: SHIP (mobile + desktop, device-level feature flags)
+
+  Mobile CTR lift  : +0.81 pp
+  Desktop CTR lift : +0.42 pp
+  Add. conv./month : 946 mobile + 265 desktop = 1,212 total
+  Add. rev./month  : ₹14.54 Lakh
+  Annual revenue   : ₹1.74 Crore
+  Dev cost         : ₹3.00 Lakh
+  Payback period   : 0.2 months
+
+  Multiple-Testing Note:
+  Two segments (mobile + desktop) were tested. Bonferroni correction applied: mobile Bonferroni p ≈ 0 (SHIP), desktop Bonferroni p = 0.0027 (SHIP). No decision changed post-correction → false positive cost = ₹0. Interaction term (treat×mobile OR=1.073, p=0.18) is NOT significant, so we cannot formally claim mobile benefits more than desktop. Device-level feature flags are recommended for monitoring, not for restricting rollout to mobile-only.
+
+  Segment Recommendations:
+  Mobile  → SHIP. Effect size +0.81pp (+22.6%), Bonferroni p ≈ 0. Largest absolute gain. Deploy first.
+  Desktop → SHIP. Effect size +0.42pp (+14.7%), Bonferroni p = 0.0027. Smaller but statistically robust after correction. Do NOT restrict to mobile-only (interaction not significant).
+  Tablet  → NO DATA — tablet segment absent from experiment. Recommend running a follow-up or monitoring post-ship.
+
+  Assumptions:
+    • Daily visitors = 40,000 | Mobile share = 64.9% | Desktop = 35.1%
+    • CTR lift mobile  = +0.81 pp (Phase 5 corrected)
+    • CTR lift desktop = +0.42 pp (Phase 5 corrected)
+    • Click-to-conversion rate = 15% (ASSUMPTION — validate with GA4)
+    • AOV = ₹1,200
+    • 100% rollout assumed post-ship
+    • Dev cost = ₹3 lakh (CSS/layout change — confirm with engineering)
+    • No tablet data — flag for post-ship monitoring
+    • Bonferroni correction applied (confirmatory framing, Phase 5)
+
+────────────────────────────────────────────────────────────────────────
+SECTION 2 — FINAL DECISION FRAMEWORK TABLE
+────────────────────────────────────────────────────────────────────────
+
+(See final_decision_table.csv / .json for machine-readable version)
+
+  [1] Exp 1 — UPI Checkout Redesign
+      Result         : NOT SIGNIFICANT (p=0.188) | Direction: NEGATIVE
+      Recommendation : DO NOT SHIP — Restart with SRM fix
+      Stat Justif.   : Frequentist: p=0.188, 95% CI [-0.40pp, +0.08pp] crosses zero. Bayesian: P(treatment>control)=9.4%, E[loss|ship]=0.1670pp...
+      ₹ Impact       : Avoided loss: ₹1.42 Crore/yr (50% rollout) or ₹2.83 Crore/yr (100%). Protected revenue: ₹17 lakh/month (SPRT stopped early). Cost-of-delay: ₹2.52 lakh/month (counterfactual MDE scenario — moot because true effect is negative).
+      Key Caveat     : SRM present (T/C ratio=1.083, chi2=447, p≈0). ALL figures HIGH UNCERTAINTY. Do not re-run until traffic-split mechanism is audited and fixed.
+
+  [2] Exp 2 — Personalized Recommendations
+      Result         : SIGNIFICANT | CUPED lift = ₹18.90/user/month (p<0.001)
+      Recommendation : SHIP — Full rollout (100%)
+      Stat Justif.   : Bootstrap CI on CUPED-adjusted mean: [₹8.92, ₹28.91]. p<0.001. Cohen's d=0.065 (negligible but economically meaningful)....
+      ₹ Impact       : Conservative annual: ₹53.52 Crore (bootstrap lower CI). Point estimate annual: ₹113.37 Crore. Overstatement avoided vs raw lift: ₹225 Crore/yr. Dev cost: ₹20 lakh. Payback: <0.5 months (conservative).
+      Key Caveat     : Use ₹53.52 Crore figure with leadership, NOT ₹113 Crore. Outlier handling was decided post-hoc — pre-register protocol next time. CUPED requires pre-experiment covariate; ensure data pipeline captures this before future experiments.
+
+  [3] Exp 3 — Discount Banner Placement
+      Result         : SIGNIFICANT overall (Z=8.02, p≈0, lift=+0.68pp, +20.4%). Mobile: +0.81pp Bonferroni p≈0. Desktop: +0.42pp Bonferroni p=0.0027.
+      Recommendation : SHIP (mobile + desktop). Device-level feature flags. Do NOT restrict to mobile-only.
+      Stat Justif.   : Overall Z=8.02, p≈0. Bonferroni correction (confirmatory): mobile p≈0 (SHIP), desktop p=0.0027 (SHIP). No decision chang...
+      ₹ Impact       : Additional conversions: 946 mobile + 265 desktop = 1,212/month. Additional revenue: ₹14.54 Lakh/month, ₹1.74 Crore/year. Dev cost: ₹3.00 Lakh. Payback: 0.2 months.
+      Key Caveat     : Click-to-conversion rate (15%) is an ASSUMPTION — validate with GA4. No tablet data; monitor tablet segment post-ship. Interaction non-significant (p=0.18): mobile-first deploy is fine operationally but do not advertise it as a mobile-specific win.
+
+────────────────────────────────────────────────────────────────────────
+SECTION 3 — PER-EXPERIMENT RETROSPECTIVES & POST-MORTEM
+────────────────────────────────────────────────────────────────────────
+
+======================================================================
+PHASE 7 — PER-EXPERIMENT RETROSPECTIVES
+======================================================================
+
+EXPERIMENT 1 RETROSPECTIVE — UPI Checkout Redesign
+---------------------------------------------------
+The defining complication was the Sample Ratio Mismatch (T/C=1.083,
+chi2=447, p≈0), which invalidated all inferential statistics before
+analysis even began. If I ran this again I would:
+
+1. Add a real-time SRM dashboard (alert threshold: chi2 p<0.01) so the
+   experiment is paused within 24 hours of launch, not discovered at
+   analysis time after 279,000 users have already been enrolled.
+
+2. Pre-register a guardrail metric for traffic-split fidelity alongside
+   the primary conversion metric. Guardrail breach = automatic stop.
+
+3. Reduce the planned sample size from n=37,671/group to n=25,000/group
+   for the pilot, running a 3-day ramp (1%→10%→50%) to catch
+   infrastructure bugs early.
+
+4. Add a holdout log for bot traffic: bots inflated the treatment arm
+   differently than control — a pre-analysis bot filter rule (based on
+   session duration < 3 s) should be part of the data cleaning script,
+   not an optional sensitivity check.
+
+5. For the metric itself: conversion rate is correct, but adding a
+   secondary guardrail on checkout completion time (ms) would help
+   distinguish UX friction from genuine preference change.
+
+----------------------------------------------------------------------
+
+EXPERIMENT 2 RETROSPECTIVE — Personalized Recommendations
+----------------------------------------------------------
+The defining complication was pre-experiment group composition bias:
+treatment users had ₹59.10 baseline revenue vs control ₹54.59 (p=0.000),
+making the raw lift of ₹56.35/user look enormous and unreliable.
+CUPED corrected this, but the correction was applied post-hoc.
+If I ran this again I would:
+
+1. Pre-register the outlier-handling protocol BEFORE running the
+   experiment: specify trimming thresholds (e.g., 99th percentile cap),
+   the CUPED covariate window (prior 30-day revenue), and which method
+   is primary (bootstrap on CUPED-adjusted means). No post-hoc choices.
+
+2. Enforce randomisation balance checks at assignment time — if the
+   pre-experiment covariate mean differs by >5% between arms at n=500,
+   halt and re-randomise before scaling.
+
+3. Use stratified randomisation (or re-randomisation) on prior-30-day
+   revenue buckets (₹0, ₹1–₹100, ₹100+) so group imbalance is
+   structurally impossible, reducing reliance on CUPED as a rescue tool.
+
+4. Extend the analysis window: Days 7–14 is only 8 days. A 21-day window
+   (dropping Days 1–6 for novelty) would give a more stable estimate,
+   especially for a recommendation engine where personalisation quality
+   improves with interaction history.
+
+5. Add a guardrail on recommendation diversity (e.g., % of users shown
+   the same top-1 product) to catch model collapse or filter-bubble risk.
+
+----------------------------------------------------------------------
+
+EXPERIMENT 3 RETROSPECTIVE — Discount Banner Placement
+-------------------------------------------------------
+The defining complication was the absence of tablet data and the
+temptation to restrict rollout to mobile-only based on segment sizes,
+despite the interaction term being non-significant (p=0.18).
+If I ran this again I would:
+
+1. Pre-register the device segmentation plan — explicitly name mobile,
+   desktop, AND tablet as pre-registered subgroups, with a plan for
+   what to do if one segment has insufficient data (minimum n per
+   segment = 10,000 per arm).
+
+2. Use a higher multiple-testing budget for subgroup analysis: instead
+   of Bonferroni (conservative), pre-register Holm-Bonferroni with
+   a primary/secondary hierarchy (overall CTR = primary;
+   device-level = secondary confirmatory). This recovers some power
+   while maintaining FWER control.
+
+3. Instrument the click-to-conversion funnel before the experiment,
+   so we have a direct revenue metric rather than estimating revenue
+   from CTR × assumed 15% conversion rate. That 15% assumption is the
+   single biggest source of uncertainty in the ₹ impact figures.
+
+4. Run the experiment for a full 4-week cycle (not just 2 weeks) to
+   capture weekday/weekend variation in banner-click behaviour, which
+   is likely larger on mobile than desktop.
+
+5. Add a guardrail on banner fatigue: measure CTR decay over time
+   (day-by-day rolling average) to ensure the lift is not driven
+   purely by novelty in the first 3 days.
+
+======================================================================
+PHASE 7 — FULL POST-MORTEM NARRATIVE (VP LEVEL)
+======================================================================
+
+FULL POST-MORTEM — Experiment 2: Personalized Recommendations
+Audience: VP of Product / Chief Analytics Officer
+Word count: ~370 words
+==============================================================
+
+HYPOTHESIS
+We hypothesised that replacing the current "top-sellers" recommendation
+widget with a personalised ML model (collaborative filtering on 90-day
+purchase history) would increase revenue per user. The pre-registered
+minimum detectable effect was ₹10/user/month, based on an internal
+benchmark from a comparable recommendations rollout at a peer company.
+
+WHAT WE FOUND
+The personalised model works — but the headline number is not what it
+first appeared. Our initial analysis produced a lift of ₹56.35/user/month,
+which would have translated to ₹338 Crore/year at full rollout. That
+figure was wrong, and catching the error before shipping is one of the
+most valuable things this A/B testing platform has done.
+
+THE SURPRISE
+When we ran CUPED (Control using Pre-Experiment Data) as a variance
+reduction step, we discovered that treatment users had ₹4.51 higher
+average revenue than control users in the 30 days BEFORE the experiment
+began (₹59.10 vs ₹54.59, p<0.001). The randomisation algorithm had
+created groups that were not comparable at baseline. This imbalance —
+not the recommendation engine — was responsible for ₹37.46 of the
+observed ₹56.35 lift. After correcting for pre-experiment bias, the
+true CUPED-adjusted lift is ₹18.90/user/month (95% CI: ₹8.92–₹28.91).
+
+We also ran an outlier sensitivity check, trimming the top 1%, 5%, and
+10% of revenue values. The raw lift remained stable at ₹53–₹56 across
+all trimming thresholds. This ruled out extreme users as the cause —
+confirming that the root cause was group composition, not a handful of
+high-spenders inflating the treatment mean.
+
+BUSINESS IMPACT
+The correct conservative figure is ₹53.52 Crore/year. This is still a
+large, statistically robust, and economically significant result. The
+payback on the estimated ₹20 lakh ML infrastructure investment is under
+three weeks on the conservative estimate.
+
+WHAT I WOULD DO DIFFERENTLY
+Three things: First, pre-register the CUPED covariate and the
+outlier-handling thresholds before unblinding — we made those decisions
+with knowledge of the data, which is an analytical conflict of interest
+even if the decisions were defensible. Second, enforce a randomisation
+balance check at n=500: if pre-experiment revenue differs by >5% between
+arms, halt and re-randomise before scaling to 13,000 users. Third, use
+stratified randomisation on revenue buckets (₹0 / ₹1–₹100 / ₹100+) to
+make group imbalance structurally impossible, so we need CUPED as a
+precision tool rather than a bias-correction rescue.
+
+The recommendation is clear: SHIP. But quote ₹53 Crore to leadership,
+not ₹113 Crore, and explain why — it builds more credibility than a
+headline number that actuals will underperform.

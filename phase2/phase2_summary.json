@@ -1,0 +1,94 @@
+{
+  "phase": 2,
+  "phase_name": "Data Collection + Sanity Checks",
+  "status": "COMPLETE",
+  "phase3_ready": false,
+  "experiments_gated": [
+    "Exp1: Checkout"
+  ],
+  "experiments_cleared": [
+    "Exp2: Recs",
+    "Exp3: Banner"
+  ],
+  "gate_status": {
+    "Exp1: Checkout": {
+      "passed": false,
+      "status": "\u274c FAIL",
+      "detail": "chi2=447.13, p=0.000000 < 0.01. T/C ratio=1.0833. SRM DETECTED."
+    },
+    "Exp2: Recs": {
+      "passed": true,
+      "status": "\u2705 PASS",
+      "detail": "chi2=0.00, p=1.000000 >= 0.01. T/C ratio=1.0000. No SRM."
+    },
+    "Exp3: Banner": {
+      "passed": true,
+      "status": "\u2705 PASS",
+      "detail": "chi2=0.00, p=1.000000 >= 0.01. T/C ratio=1.0000. No SRM."
+    }
+  },
+  "phase3_flags": {
+    "exp1": {
+      "srm_failed": true,
+      "srm_action": "DO_NOT_ANALYZE \u2014 restart experiment",
+      "duplicate_user": 773192,
+      "duplicate_action": "deduplicate keep=first at Phase 3 start",
+      "bot_warn": true,
+      "bot_action": "false_positive_kaggle_timestamps \u2014 no removal",
+      "novelty_warn": true,
+      "novelty_action": "artefact_of_srm \u2014 do not interpret"
+    },
+    "exp2": {
+      "srm_failed": false,
+      "novelty_detected": true,
+      "novelty_action": "use_late_period_days_7_14_as_primary",
+      "cuped_covariate": "pre_exp_revenue",
+      "cuped_correlation": 0.85,
+      "aa_warn": true,
+      "aa_action": "simulation_artefact_cuped_will_correct",
+      "primary_metric": "revenue",
+      "test_type": "means_ttest_plus_mannwhitney_robustness"
+    },
+    "exp3": {
+      "srm_failed": false,
+      "novelty_warn": false,
+      "primary_metric": "clicked",
+      "segments": [
+        "mobile",
+        "desktop"
+      ],
+      "bonferroni_alpha": 0.025,
+      "test_type": "proportion_ztest_bonferroni",
+      "guardrail_metric": "converted (post-click CVR)"
+    }
+  },
+  "dataset_stats": {
+    "exp1": {
+      "rows": 279444,
+      "control_n": 134133,
+      "treatment_n": 145311,
+      "srm_ratio": 1.0833,
+      "experiment_days": 22,
+      "file": "phase2/experiment1/exp1_checkout_data.csv"
+    },
+    "exp2": {
+      "rows": 22640,
+      "control_n": 11320,
+      "treatment_n": 11320,
+      "srm_ratio": 1.0,
+      "experiment_days": 14,
+      "file": "phase2/experiment2/exp2_recommendations_data.csv"
+    },
+    "exp3": {
+      "rows": 197544,
+      "control_n": 98772,
+      "treatment_n": 98772,
+      "srm_ratio": 1.0,
+      "experiment_days": 14,
+      "file": "phase2/experiment3/exp3_banner_data.csv"
+    }
+  },
+  "srm_policy": "No experiment results are trusted until SRM check passes. Exp1 is gated. Exp2 and Exp3 are cleared for Phase 3.",
+  "validation_summary_file": "phase2/phase2_validation_summary.csv",
+  "random_seed": 42
+}

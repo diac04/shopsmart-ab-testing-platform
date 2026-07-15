@@ -1,0 +1,19 @@
+{
+  "design_n_per_group": 37671,
+  "actual_n_per_group": 134133,
+  "design_mde_abs": 0.004,
+  "design_mde_rel_pct": 10.53,
+  "design_power": 0.8,
+  "design_alpha": 0.05,
+  "design_cohens_h": 0.0204,
+  "observed_ctrl_rate": 0.120425,
+  "observed_treat_rate": 0.118807,
+  "observed_lift_abs": -0.001618,
+  "observed_lift_rel_pct": -1.3436,
+  "observed_cohens_h": 0.004986,
+  "power_for_observed": 0.10513,
+  "n_needed_for_observed": 631448,
+  "actual_mde_abs": 0.002095,
+  "adequately_powered": false,
+  "observed_vs_mde_ratio": 0.4045
+}

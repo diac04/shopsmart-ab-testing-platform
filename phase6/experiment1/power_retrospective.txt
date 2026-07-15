@@ -1,0 +1,57 @@
+=================================================================
+POWER ANALYSIS RETROSPECTIVE — Experiment 1 Checkout
+ShopSmart India A/B Testing Platform
+=================================================================
+
+1. DESIGN vs OUTCOME COMPARISON
+----------------------------------------
+  Phase 1 pre-registered the experiment to detect a minimum
+  detectable effect (MDE) of 0.40 percentage points (pp),
+  which corresponds to a +10.5% relative lift on the
+  3.8% baseline conversion rate.
+  This was designed at 80% power and α=0.05, requiring
+  37,671 users per group (75,342 total).
+
+  Phase 3 analysis revealed an observed absolute lift of
+  -0.162 pp — approximately 0.40× the pre-registered MDE.
+  The observed Cohen's h was 0.00499, compared
+  to the pre-registered h = 0.0204.
+
+2. WAS THE EXPERIMENT ADEQUATELY POWERED?
+----------------------------------------
+  No. The experiment was powered for effects ≥ 0.40 pp.
+  For the effect we actually observed (-0.162 pp),
+  the achieved statistical power was only 10.5%.
+  This means even if a true effect of this magnitude existed,
+  the experiment had only a 10.5% chance of detecting it,
+  far below the 80% pre-registered target.
+
+3. WHAT WOULD WE HAVE MISSED?
+----------------------------------------
+  If the true effect is -0.162 pp (as observed), the
+  experiment is grossly underpowered to distinguish this from
+  zero. To achieve 80% power for an effect this small would
+  require approximately 631,448 users per group
+  (1,262,896 total) — about 16.8× the
+  pre-registered sample size.
+
+  With the actual collected n of 134,133/group,
+  the smallest detectable effect at 80% power is 0.210 pp —
+  which is 0.52× the Phase 1 MDE.
+
+4. DESIGN LOOP CLOSURE
+----------------------------------------
+  The null result (p=0.188, frequentist Phase 3) is consistent
+  with two interpretations: (a) there is truly no effect, or
+  (b) there is a small effect below our MDE that we cannot
+  distinguish from noise. The Bayesian analysis (Part A) also
+  finds P(treatment > control) ≈ 0.5, reinforcing (a).
+
+  The practical implication: the UPI checkout redesign does not
+  appear to move conversion by the economically meaningful
+  +0.40 pp threshold. A future experiment targeting a
+  smaller effect (0.210–0.40 pp range) would require
+  substantially more traffic or a longer run window than the
+  14-day minimum set in Phase 1.
+
+=================================================================

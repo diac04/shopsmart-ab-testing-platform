@@ -1,0 +1,9 @@
+scenario,lift_rs,ci_lo,ci_hi,p_value,significant
+Raw (no treatment),56.35,37.49,75.44,0.0001,True
+Winsorized (1%–99%),55.08,36.97,73.42,0.0001,True
+Winsorized (5%–95%),53.47,36.78,70.51,0.0001,True
+Trimmed mean (5% each tail),53.47,36.78,70.51,0.0001,True
+Remove top 0.1%,55.22,36.73,73.28,0.0001,True
+Remove top 0.5%,54.71,36.76,72.25,0.0001,True
+Remove top 1.0%,53.89,36.01,71.02,0.0001,True
+CUPED-adjusted,18.9,8.92,28.91,0.0001,True
