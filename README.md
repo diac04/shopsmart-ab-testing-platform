@@ -141,7 +141,6 @@ Interactive sliders (AOV, monthly visitors, rollout %) that recalculate revenue 
 
 ## Lessons Learned
 
-Real projects surface problems; hiding them signals inexperience. These are documented openly.
 
 ### Lesson 1 — Phase 2 Data Quality Issue (Experiment 1)
 An SRM (Sample Ratio Mismatch) was detected in the Kaggle dataset at analysis time, not at ingestion. A real-time SRM dashboard with an automatic pause threshold (chi-square p < 0.01) should have been part of the experimentation infrastructure from day one. This would have flagged the imbalance within 24 hours instead of after 279,000 users had enrolled. **Action taken:** SRM check is now a gating indicator on the Statistical Health Monitor page.
