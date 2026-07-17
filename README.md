@@ -2,7 +2,7 @@
 
 An end-to-end experimentation platform demonstrating rigorous statistical analysis, business impact quantification, and executive-ready decision reporting for three concurrent A/B tests in the Indian e-commerce context.
 
-**Live Dashboard:** `python -m streamlit run phase8/ab_testing_dashboard.py`
+**Live Dashboard:** https://shopsmart-ab-testing-platform-diac.streamlit.app/
 
 ---
 
@@ -64,6 +64,38 @@ Six pages, ordered from executive to technical:
 
 ---
 ## Dashboard Preview
+
+### Executive Summary
+The primary view for business stakeholders. Ship/hold decisions with financial impact stated in plain language.
+
+![Executive Summary](phase8/screenshots/01_executive_summary.png)
+(phase8/screenshots/01_executive_summary2.png)
+
+
+### Experiment Overview
+Portfolio-level comparison table with sample sizes, direction, and colour-coded ship decisions.
+
+![Experiment Overview](phase8/screenshots/02_experiment_overview.png)
+
+### Statistical Health Monitor
+Data quality gating (SRM), guardrail compliance, novelty effect visualization, and sequential testing boundaries with cost-of-delay figures.
+
+![Health Monitor](phase8/screenshots/03_health_monitor.png)
+
+### Experiment Deep Dive
+Per-experiment drill-down: confidence intervals, day-by-day trends, and raw-vs-CUPED bias correction visualization.
+
+![Deep Dive](phase8/screenshots/04_deep_dive.png)
+
+### Bayesian Results
+Posterior distributions, interactive expected loss calculator, and prior sensitivity comparison showing decision robustness.
+
+![Bayesian Results](phase8/screenshots/05_bayesian.png)
+
+### Business Impact Calculator
+Interactive sliders (AOV, monthly visitors, rollout %) that recalculate revenue projections and ROI in real time.
+
+![Business Impact Calculator](phase8/screenshots/06_business_impact.png)
 
 ## Decisions and Justifications
 
