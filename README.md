@@ -138,7 +138,7 @@ python -m streamlit run ab_testing_dashboard.py
 
 
 ## Technology Stack
-- Language: Python 3.10+
+- Language: Python 3.14
 - Statistical libraries: SciPy, NumPy, statsmodels
 - Visualisation: Plotly, Streamlit
 - Data: Pandas
