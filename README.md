@@ -2,7 +2,7 @@
 
 An end-to-end experimentation platform demonstrating rigorous statistical analysis, business impact quantification, and executive-ready decision reporting for three concurrent A/B tests in the Indian e-commerce context.
 
-**Live Dashboard:** `python -m streamlit run phase8/ab_testing_dashboard.py`
+**Live Dashboard:** (https://shopsmart-ab-testing-platform-diac.streamlit.app/)
 
 ---
 
