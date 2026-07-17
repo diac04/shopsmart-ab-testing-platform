@@ -2,7 +2,7 @@
 
 An end-to-end experimentation platform demonstrating rigorous statistical analysis, business impact quantification, and executive-ready decision reporting for three concurrent A/B tests in the Indian e-commerce context.
 
-**Live Dashboard:** (https://shopsmart-ab-testing-platform-diac.streamlit.app/)
+**Live Dashboard:** https://shopsmart-ab-testing-platform-diac.streamlit.app/
 
 ---
 
